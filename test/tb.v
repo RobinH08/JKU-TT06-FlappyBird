@@ -11,19 +11,20 @@ module tb ();
     $dumpvars(0, tb);
     #1;
   end
-
+	
+	parameter gs = 8;
   // Wire up the inputs and outputs:
-  reg clk;
-  reg rst_n;
-  reg ena;
-  reg [7:0] ui_in;
-  reg [7:0] uio_in;
+  reg clk = 1'b0;
+  reg rst_n = 1'b0;
+  reg ena = 1'b0;
+  reg [7:0] ui_in = 8'b0;
+  reg [7:0] uio_in = 8'b0;
   wire [7:0] uo_out;
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
 
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_flappy_bird (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -40,5 +41,33 @@ module tb ();
       .clk    (clk),      // clock
       .rst_n  (rst_n)     // not reset
   );
+  
+  always begin
+		#5 clk_i = ~clk_i;
+	end
+	
+	/* verilator lint_on STMTDLY */
+
+	initial begin
+		$dumpfile("tt_um_flappy_bird_tb.vcd");
+		$dumpvars;
+
+		/* verilator lint_off STMTDLY */
+		#20 ena = 1'b1;
+		#20 rst_n = 1'b1 ; // deassert reset
+		#500 rst_n = 1'b0;
+		#300 ui_in = 8'b0000_0010 ;//down
+		#300 ui_in = 8'b0000_0001 ;//up
+		#300 ui_in = 8'b0000_0010 ;//up
+		#300 ui_in = 8'b0000_0010 ;//up
+		#300 ui_in = 8'b0000_0001 ;//up
+		#300 ui_in = 8'b0000_0001 ;//up
+		#300 ui_in = 8'b0000_0010 ;//up
+		#300 ui_in = 8'b0000_0000 ;//up
+		
+		#4500 $finish ; // finish
+		/* verilator lint_on STMTDLY */
+	end
+
 
 endmodule
