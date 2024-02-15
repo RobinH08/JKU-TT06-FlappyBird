@@ -1,7 +1,7 @@
 `default_nettype none
-`include "get_input.v"
-`include "action.v"
-`include "display.v"
+`include "../src/get_input.v"
+`include "../src/action.v"
+`include "../src/display.v"
 
 module tt_um_flappy_bird 
 (
