@@ -1,8 +1,5 @@
-/*
- Simple counter with generic bitwidth .
-*/
 
-`default_nettype none
+
 `ifndef __ACTION__
 `define __ACTION__
 
@@ -17,17 +14,17 @@ module action
 ) (
  // define I /O ’ s of the module
 
-	input clk_i ,
+	input wire clk_i ,
 	
-	input up_i,
+	input wire up_i,
 	
-	input down_i,
+	input wire down_i,
 	
-	input reset_i,
-	input e_act_i,
+	input wire reset_i,
+	input wire e_act_i,
 	
-	output [gs*gs-1:0] matrix_o, //flatten matrix
-	output d_act_o
+	output wire [gs*gs-1:0] matrix_o, //flatten matrix
+	output wire d_act_o
 	//output dead_o
  	
 );
@@ -39,10 +36,11 @@ module action
 	
 		
 	reg d_act; 		//used to disbale 
-
+	integer i = 0;
+	
 	integer alive_counter ;				//how many beams are passed
 	integer pos_counter ;
-	reg [(cr-1):0] change_counter ;			//shift beams to the left when overflow
+	reg [3:0] change_counter ;			//shift beams to the left when overflow
 	reg [1:0] add_beam_counter ;		//add beam after 4 (overflow) beam shifts
 	reg [4:0] random_counter = 0; 		//randdom counter to select beam-shema 
 	
@@ -105,17 +103,17 @@ module action
 					//change beam_matrix & check if alive
 					if (change_counter == 0) begin
 						//timer has overflow -> change beam matrix
-						for (integer i = 0; i < gs*(gs-1); i = i+1) begin
+						for (i = 0; i < gs*(gs-1); i = i+1) begin
 							beam_matrix[i] <= beam_matrix[i+gs];
 						end
 						//timer has overflow + 4 beam changes happend -> add_beam
 						if (add_beam_counter == 0) begin
-							for (integer i = 0; i < gs; i = i+1) begin
+							for (i = 0; i < gs; i = i+1) begin
 								beam_matrix[gs*(gs-1)+i] <= beam_shemas[i + gs * random_counter];
 							end
 							
 							//check if bird_pos == beam -> dead == 1'b1 , else increas alive_counter 					
-							for(integer i = 0; i < gs; i = i+1) begin
+							for(i = 0; i < gs; i = i+1) begin
 								if((bird_pos[i] == 1'b1) && (beam_matrix[i] == 1'b1)) begin
 									dead <= 1'b1;
 								end
@@ -124,7 +122,7 @@ module action
 								alive_counter <= alive_counter + 1;
 							end
 						end else begin						
-							for (integer i = 0; i < gs; i = i+1) begin
+							for (i = 0; i < gs; i = i+1) begin
 								beam_matrix[gs*(gs-1)+i] <= 1'b0;
 							end
 						end
@@ -138,10 +136,10 @@ module action
 
 						
 				// compute matrix for display
-				for(integer i = 0 ; i < gs ; i = i+1) begin
+				for(i = 0 ; i < gs ; i = i+1) begin
 					matrix[i] <= bird_pos[i] + beam_matrix[i];
 				end
-				for(integer i = gs ; i < gs*gs ; i = i+1) begin
+				for(i = gs ; i < gs*gs ; i = i+1) begin
 					matrix[i] <= beam_matrix[i];
 				end				
 								
@@ -171,4 +169,3 @@ module action
 endmodule // display
 
 `endif
-`default_nettype wire

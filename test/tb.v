@@ -1,4 +1,4 @@
-`default_nettype none `timescale 1ns / 1ps
+`default_nettype none `timescale 100ns / 100ps
 
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
@@ -45,7 +45,7 @@ module tb ();
 	    .rst_n  (rst_n)     // not reset
 	);
   
-  always begin
+  	always begin
 		#5 clk = ~clk;
 	end
 	
@@ -56,19 +56,19 @@ module tb ();
 		$dumpvars;
 
 		/* verilator lint_off STMTDLY */
-		#20 ena = 1'b1;
-		#20 rst_n = 1'b1 ; // deassert reset
-		#500 rst_n = 1'b0;
-		#300 ui_in = 8'b0000_0010 ;//down
-		#300 ui_in = 8'b0000_0001 ;//up
-		#300 ui_in = 8'b0000_0010 ;//up
-		#300 ui_in = 8'b0000_0010 ;//up
-		#300 ui_in = 8'b0000_0001 ;//up
-		#300 ui_in = 8'b0000_0001 ;//up
-		#300 ui_in = 8'b0000_0010 ;//up
-		#300 ui_in = 8'b0000_0000 ;//up
+		#20000 ena = 1'b1;
+		#20000 rst_n = 1'b1 ; // deassert reset
+		#500000 rst_n = 1'b0;
+		#3000000 ui_in = 8'b0000_0010 ;//down
+		#3000000 ui_in = 8'b0000_0001 ;//up
+		#3000000 ui_in = 8'b0000_0010 ;//up
+		#3000000 ui_in = 8'b0000_0010 ;//up
+		#3000000 ui_in = 8'b0000_0001 ;//up
+		#3000000 ui_in = 8'b0000_0001 ;//up
+		#3000000 ui_in = 8'b0000_0010 ;//up
+		#3000000 ui_in = 8'b0000_0000 ;//up
 		
-		#4500 $finish ; // finish
+		#45000000 $finish ; // finish
 		/* verilator lint_on STMTDLY */
 	end
 

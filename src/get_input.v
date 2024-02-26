@@ -1,31 +1,27 @@
-/*
- Simple counter with generic bitwidth .
-*/
 
-`default_nettype none
-`ifndef __COUNTER__
-`define __COUNTER__
+`ifndef __GET_INPUT__
+`define __GET_INPUT__
 
 module get_input
 #(
  parameter cr = 4 // counter range
 ) (
  // define I /O ’ s of the module
- 	input clk_i , // clock
+ 	input wire clk_i , // clock
  	//input rst_i , // reset
- 	input e_inp, // enable input
+ 	input wire e_inp, // enable input
  	
- 	input right_i ,
- 	input left_i ,
+ 	input wire right_i ,
+ 	input wire left_i ,
 	
-	output right_o ,
- 	output left_o ,
+	output wire right_o ,
+ 	output wire left_o ,
  	
  	
  	//output rst_o ,
  	
  	
- 	output d_inp_o 
+ 	output wire d_inp_o 
 );
 
 	// start the module implementation
@@ -36,8 +32,8 @@ module get_input
  	reg right ;
  	reg d_inp ;
 	
-	reg [cr-1:0] left_cr = 0;
-	reg [cr-1:0] right_cr = 0;
+	reg [1:0] left_cr = 0;
+	reg [1:0] right_cr = 0;
 	//reg [cr-1:0] rst_cr =0 ;
 	
 	// assign the counter value to the output
@@ -92,4 +88,4 @@ module get_input
 endmodule // input
 
 `endif
-`default_nettype wire
+

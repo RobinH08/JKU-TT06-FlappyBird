@@ -22,7 +22,7 @@ module tt_um_flappy_bird
     assign uio_oe = 8'b11111111;
 	
 	parameter gs = 8;
-	parameter cr = 2;
+	parameter cr = 14;	//wie schnell wird geshiftet
 	
 	
 	//reg
@@ -63,7 +63,7 @@ module tt_um_flappy_bird
 		);
 	
 	action
-		#(gs)
+		#(gs, cr)
 		action_dut (
 			.clk_i ( clk) ,
 			.up_i ( up ),
