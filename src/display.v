@@ -60,7 +60,7 @@ module display
 				end
 			end
 
-			clk_new = clk_new + 1;	
+			clk_new <= clk_new + 1;	
 		end else begin
 			col_val <= {{( gs) {1'b0}}};
 			row_val <= 8'b0;
