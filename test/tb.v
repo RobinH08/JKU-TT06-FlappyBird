@@ -57,8 +57,8 @@ module tb ();
 
 		/* verilator lint_off STMTDLY */
 		#20000 ena = 1'b1;
-		#20000 rst_n = 1'b1 ; // deassert reset
-		#500000 rst_n = 1'b0;
+		#20000 rst_n = 1'b0 ; // deassert reset
+		#500000 rst_n = 1'b1;
 		#3000000 ui_in = 8'b0000_0010 ;//down
 		#3000000 ui_in = 8'b0000_0001 ;//up
 		#3000000 ui_in = 8'b0000_0010 ;//up

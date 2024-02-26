@@ -68,7 +68,7 @@ module tt_um_flappy_bird
 			.clk_i ( clk) ,
 			.up_i ( up ),
 			.down_i ( down ),
-			.reset_i ( rst_n ),
+			.reset_i ( ~rst_n ),
 			.e_act_i (e_act ),
 			.matrix_o (matrix),
 			.d_act_o(d_act)
@@ -104,7 +104,7 @@ module tt_um_flappy_bird
     always @(negedge clk) begin
 
 	if(ena) begin
-		tReset <= rst_n;
+		tReset <= ~rst_n;
 		if(tReset) begin
 			e_inp <= 1'b1;
 			State <= Input_s;
