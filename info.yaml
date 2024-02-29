@@ -23,34 +23,34 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "up-Button"
+  ui[1]: "down-Button"
+  ui[2]: "not used"
+  ui[3]: "not used"
+  ui[4]: "not used"
+  ui[5]: "not used"
+  ui[6]: "not used"
+  ui[7]: "not used"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "row of display-Matrix"
+  uo[1]: "row of display-Matrix"
+  uo[2]: "row of display-Matrix"
+  uo[3]: "row of display-Matrix"
+  uo[4]: "row of display-Matrix"
+  uo[5]: "row of display-Matrix"
+  uo[6]: "row of display-Matrix"
+  uo[7]: "row of display-Matrix"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "col of display-Matrix"
+  uio[1]: "col of display-Matrix"
+  uio[2]: "col of display-Matrix"
+  uio[3]: "col of display-Matrix"
+  uio[4]: "col of display-Matrix"
+  uio[5]: "col of display-Matrix"
+  uio[6]: "col of display-Matrix"
+  uio[7]: "col of display-Matrix"
 
 # Do not change!
 yaml_version: 6
