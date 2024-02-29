@@ -27,6 +27,6 @@ async def test_adder(dut):
   dut.ui_in.value = 2
   #dut.uio_in.value = 30
 
-  await ClockCycles(dut.clk, 5)
+  await ClockCycles(dut.clk, 5000000000000000000000000000000000000000)
 
   assert dut.uio_out.value == 254
