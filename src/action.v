@@ -57,7 +57,9 @@ module action
 			dead <= 1'b1;
 			d_act <= 1'b1;			
 			//Spieler, beam_matrix, dead, d_act,  zurücksetzen
-			
+			beam_matrix <= 64'b0;
+			bird_pos <= 8'b0;
+			matrix <= 64'b0;
 		end else begin	//Reset nicht gedrückt - Spieler bereit zu starten oder spielt
 			if(e_act_i) begin
 				if(dead) begin
