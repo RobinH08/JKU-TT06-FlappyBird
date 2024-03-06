@@ -151,7 +151,6 @@ module tt_um_flappy_bird
 		
     end
 
-`endif
-
     
 endmodule
+`endif
