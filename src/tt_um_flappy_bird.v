@@ -3,6 +3,11 @@
 `include "../src/action.v"
 `include "../src/display.v"
 
+
+`ifndef __TT_UM_FLAPPY_BIRD__
+`define __TT_UM_FLAPPY_BIRD__
+
+
 module tt_um_flappy_bird 
 (
 
@@ -145,6 +150,8 @@ module tt_um_flappy_bird
 
 		
     end
+
+`endif
 
     
 endmodule
