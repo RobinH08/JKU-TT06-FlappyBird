@@ -3,8 +3,9 @@
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
 */
-
-#`include "../src/tt_um_flappy_bird.v"
+`ifndef DGL_TEST
+	`include "../src/tt_um_flappy_bird.v"
+`endif
 module tb ();
 
   // Dump the signals to a VCD file. You can view it with gtkwave.
