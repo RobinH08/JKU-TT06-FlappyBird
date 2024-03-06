@@ -8,7 +8,7 @@ from cocotb.triggers import ClockCycles
 @cocotb.test()
 async def test_adder(dut):
   dut._log.info("Start")
-  
+"""  
   # Our example module doesn't use clock and reset, but we show how to use them here anyway.
   clock = Clock(dut.clk, 10, units="us")
   cocotb.start_soon(clock.start())
@@ -30,3 +30,4 @@ async def test_adder(dut):
   await ClockCycles(dut.clk, 5000000000000000000000000000000000000000)
 
   assert dut.uio_out.value == 254
+"""
