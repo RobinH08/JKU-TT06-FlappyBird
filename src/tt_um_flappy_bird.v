@@ -2,9 +2,9 @@
 `define __TT_UM_FLAPPY_BIRD__
 
 `default_nettype none
-#`include "../src/get_input.v"
-#`include "../src/action.v"
-#`include "../src/display.v"
+//`include "../src/get_input.v"
+//`include "../src/action.v"
+//`include "../src/display.v"
 
 
 
